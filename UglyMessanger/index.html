@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>
+        месссенджер
+    </title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body >
+<div class="container">
+    <div class="msg-header">
+        <div class="msg-header-img">
+            <img src="dog.jpg">
+        </div>
+        <div class="name">
+            <h1>Избранное</h1>
+            <h2>Был недавно</h2>
+        </div>
+    </div>
+    <div class="Chat-page">
+        <div class="msg-box">
+            <div class="msg">
+                <div class="msg-content">Если я пойму, как сделать появление сообщений снизу, они будут появляться снизу, но я не пойму</div>
+            </div>
+        </div>
+    </div>
+    <template id="msg-template">
+        <div class="msg">
+            <div class="msg-content">помогите</div>
+        </div>
+    </template>
+    <div class="msg-bottom">
+        <div class="input">
+            <textarea class="msg-send" placeholder="Напишите сообщение..."></textarea>
+            <div class="send-btn">
+                <button id="send-button" type="button" onclick="OnClick()">Отправить</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>

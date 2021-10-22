@@ -1,0 +1,94 @@
+.container
+{
+    max-width: 500rem;
+    margin: auto;
+    margin-left: 20%;
+    margin-right: 20%;
+    letter-spacing: 0.5px;
+
+}
+img
+{
+    max-width: 100%;
+    border-radius: 50%;
+}
+.msg-header
+{
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 10%;
+    border-bottom: none;
+    display: inline-block;
+    background-color: cornflowerblue ;
+}
+.msg-header-img
+{
+    border-radius: 50%;
+    width: 70px;
+    margin-left: 15%;
+    margin-top: 1px;
+    float:left;
+}
+
+.name
+{
+    width: 12px;
+    float: left;
+    margin-top: 10px
+}
+.name h1
+{
+    font-size: 20px;
+    margin-left: 20px;
+    color: white;
+}
+.name h2
+{
+    font-size: 7px;
+    margin-left: 20px;
+    color: white;
+    line-height: 10px;
+}
+.Chat-page
+{
+    padding: 0 0 50px 0;
+}
+.msg-box
+{
+    border: 1px solid #ccc;
+    overflow: hidden;
+    padding-bottom: 500px;
+    display: flex;
+    vertical-align: bottom;
+    align-items: end;
+    justify-content: end;
+    flex-direction: column;
+}
+.msg
+{
+    background-color: cornflowerblue;
+    padding: 10px 5px;
+    border-radius: 20%;
+}
+.msg-content
+{
+    color: white;
+    font-size: 14px;
+}
+.msg-bottom
+{
+    position: relative;
+    height: 10%;
+    background-color: cornflowerblue;
+}
+.input
+{
+    float: right;
+    margin-top: 13px;
+    margin-right: 20px;
+    outline: none;
+    border-radius: 20px;
+    width: 61%;
+    background-color: white;
+
+}
