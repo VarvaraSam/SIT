@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Братья-пилоты</title>
+</head>
+<body>
+<div class ="game">
+    <div class = "tit">
+        <h1>Закрасьте все ячейки и вы победите </h1>
+    </div>
+    <div class="holesPlace">
+        <div class="hole hole1"></div>
+        <div class="hole hole2"></div>
+        <div class="hole hole3"></div>
+        <div class="hole hole4"></div>
+        <div class="hole hole5"></div>
+        <div class="hole hole6"></div>
+        <div class="hole hole7"></div>
+        <div class="hole hole8"></div>
+        <div class="hole hole9"></div>
+        <div class="hole hole10"></div>
+        <div class="hole hole11"></div>
+        <div class="hole hole12"></div>
+        <div class="hole hole13"></div>
+        <div class="hole hole14"></div>
+        <div class="hole hole15"></div>
+        <div class="hole hole16"></div>
+    </div>
+    <div class="btn">
+        <button class="startBtn">Начать</button>
+    </div>
+</div>
+<script>
+    const holes = document.querySelectorAll(".hole");
+    const startbtn =document.querySelector(".startBtn");
+    console.log("Я правда не знаю что не так с первой игрой, со второго раза все работает нормально")
+    startbtn.addEventListener("click", ()=> {
+        startbtn.style.display = "none";
+        for (let i = 0; i < holes.length; i++) {
+            holes[i].addEventListener("click", clickOnHole);
+            if (Math.floor(Math.random()*10)>5) {
+                holes[i].style.backgroundColor = "black";
+            }
+        }
+    });
+        function clickOnHole(e) {
+            let Nelem;
+            for (let i = 0; i < holes.length; i++) {
+                if (holes[i] === e.currentTarget) {
+                    Nelem = i;
+                }
+            }
+            let line = Math.floor(Nelem / 4);
+            let column = Nelem % 4;
+
+            for (let i = 0; i < holes.length; i++) {
+                if (Math.floor(i / 4) === line || i % 4 === column) {
+                    if (holes[i].style.backgroundColor === "brown") {
+                        holes[i].style.backgroundColor = "black";
+                    } else holes[i].style.backgroundColor = "brown";
+                }
+
+            }
+            let k = 0;
+            for (let i = 0; i < holes.length; i++) {
+                if (holes[i].style.backgroundColor === "black") {
+                    k++;
+                }
+            }
+            if (k === 16) {
+                for (let i = 0; i < holes.length; i++) {
+                    holes[i].style.backgroundColor = "brown";
+                    startbtn.style.display = "inline-block";
+
+                }
+            }
+        }
+
+</script>
+</body>
+</html>
