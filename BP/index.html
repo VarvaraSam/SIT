@@ -35,7 +35,38 @@
 <script>
     const holes = document.querySelectorAll(".hole");
     const startbtn =document.querySelector(".startBtn");
-    console.log("Я правда не знаю что не так с первой игрой, со второго раза все работает нормально")
+    function clickOnHole(e) {
+        let Nelem;
+        for (let i = 0; i < holes.length; i++) {
+            if (holes[i] === e.currentTarget) {
+                Nelem = i;
+            }
+        }
+        let line = Math.floor(Nelem / 4);
+        let column = Nelem % 4;
+
+        for (let i = 0; i < holes.length; i++) {
+            if (Math.floor(i / 4) === line || i % 4 === column) {
+                if (holes[i].style.backgroundColor === "black") {
+                    holes[i].style.backgroundColor = "brown";
+                } else holes[i].style.backgroundColor = "black";
+            }
+
+        }
+        let k = 0;
+        for (let i = 0; i < holes.length; i++) {
+            if (holes[i].style.backgroundColor === "black") {
+                k++;
+            }
+        }
+        if (k === 16) {
+            for (let i = 0; i < holes.length; i++) {
+                holes[i].style.backgroundColor = "brown";
+                startbtn.style.display = "inline-block";
+
+            }
+        }
+    }
     startbtn.addEventListener("click", ()=> {
         startbtn.style.display = "none";
         for (let i = 0; i < holes.length; i++) {
@@ -45,38 +76,7 @@
             }
         }
     });
-        function clickOnHole(e) {
-            let Nelem;
-            for (let i = 0; i < holes.length; i++) {
-                if (holes[i] === e.currentTarget) {
-                    Nelem = i;
-                }
-            }
-            let line = Math.floor(Nelem / 4);
-            let column = Nelem % 4;
 
-            for (let i = 0; i < holes.length; i++) {
-                if (Math.floor(i / 4) === line || i % 4 === column) {
-                    if (holes[i].style.backgroundColor === "brown") {
-                        holes[i].style.backgroundColor = "black";
-                    } else holes[i].style.backgroundColor = "brown";
-                }
-
-            }
-            let k = 0;
-            for (let i = 0; i < holes.length; i++) {
-                if (holes[i].style.backgroundColor === "black") {
-                    k++;
-                }
-            }
-            if (k === 16) {
-                for (let i = 0; i < holes.length; i++) {
-                    holes[i].style.backgroundColor = "brown";
-                    startbtn.style.display = "inline-block";
-
-                }
-            }
-        }
 
 </script>
 </body>
