@@ -1,0 +1,16 @@
+{
+  "name": "npm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.0.0"
+  },
+  "type": "module"
+}
