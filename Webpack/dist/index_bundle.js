@@ -1,0 +1,1 @@
+document.querySelector("p").innerText="Я работаю!";
