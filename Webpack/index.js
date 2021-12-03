@@ -1,2 +1,2 @@
-const text = document.querySelector('p');
-text.innerText = "Я работаю!";
+import chalk from 'chalk';
+console.log(chalk.bgBlue("Оно работает"));
