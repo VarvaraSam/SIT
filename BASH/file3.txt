@@ -1,0 +1,9 @@
+koko kokokokkokyky kokkkkookyky
+kyky kykyk
+kyky kykykokko
+string 0
+string 1
+string 4
+string 5
+string 6
+string 8
