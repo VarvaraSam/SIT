@@ -28,7 +28,7 @@ function print_messages(){
 }
 
 if (isset($_GET['login']) && isset($_GET['password']) && isset($_GET['message'])) {
-    if ($users[(string)$_GET['login']] == (string)$_GET['password']) {
+    if ($users[(string)$_GET['login']] === (string)$_GET['password']) {
         add_mes_to_json((string)$_GET['login'],(string)$_GET['message']);
     }
     else {
