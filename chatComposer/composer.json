@@ -1,0 +1,12 @@
+{
+    "name": "meme/chat",
+    "autoload": {
+        "psr-4": {
+            "Meme\\Chat\\": "src/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^2.7",
+        "twig/twig": "^3.4"
+    }
+}
