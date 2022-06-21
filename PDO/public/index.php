@@ -48,7 +48,7 @@ function print_messages(){
 }
 
 if ((string)$_GET['login'] !== '' && isset($_GET['login']) && isset($_GET['password']) && isset($_GET['message'])) {
-    if ($users[(string)$_GET['login']] == (string)$_GET['password']) {
+    if ($users[(string)$_GET['login']] === (string)$_GET['password']) {
         add_mes_to_json((string)$_GET['login'],(string)$_GET['message']);
         $log->info('user send message',['user' => $_GET['login'], 'send' => $_GET['message']]);
         header('Refresh: 0; url=index.php');
