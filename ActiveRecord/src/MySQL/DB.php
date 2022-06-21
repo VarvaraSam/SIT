@@ -20,16 +20,5 @@ class DB
         return $sth->execute();
     }
 
-    public function query($sql): array
-    {
-        $sth = $this->l->prepare($sql);
-        $sth->execute();
-
-        $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($result === false)
-            return [];
-
-        return  $result;
-    }
+    
 }
