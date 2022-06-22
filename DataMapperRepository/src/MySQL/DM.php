@@ -2,62 +2,99 @@
 
 namespace Meme\Chat\MySQL;
 
-use Meme\Chat\MySQL\DMdata;
-//use PDO;
+use Meme\Chat\MySQL\DMUser;
+use PDO;
 
 class DM
 {
-    public DMdata $DMdata;
+    private $l;
 
     public function __construct()
     {
-        $this->DMdata = new DMdata();
+        $this->l = new PDO('mysql:host=localhost;dbname=sit', 'meme', 'memepass');
+    }
+    public function Command($command)
+    {
+        $sql = $this->l->prepare($command);
+        $sql->execute();
     }
 
-    public function MDGetAll()
+    public function MDGetAllFromTable(): array
     {
-        return $this->DMdata->data;
-    }
-
-    public function MDGetByID($id)
-    {
-        $table = $this->DMdata->data;
-        $result ='';
-        foreach ($table as $record)
-        {
-            if ($record['id'] === $id)
+        $command = "select * from logPas";
+        $sql = $this->l->prepare($command);
+        $sql->execute();
+        $result = $sql->fetchAll();
+        $users = array();
+        if (isset($result)) {
+            foreach ($result as $row)
             {
-                $result = $record['id'] .' '. $record['login'];
+                $NewRecord = new DMUser();
+                $NewRecord->setId($row['id']);
+                $NewRecord->setLogin($row['login']);
+                $NewRecord->setPass($row['pass']);
+                array_push($users, $NewRecord);
+            }
+
+        }
+        return $users;
+    }
+    public function MDGetAll($users)
+    {
+
+        foreach ($users as $record)
+        {
+            $id = $record->getId();
+            $log = $record->getLogin();
+            $pas = $record->getPass();
+            echo "<p>" . $id . ' ' .$log . ' ' . $pas . "</p>" ;
+        }
+    }
+
+    public function MDGetByID($id,$users)
+    {
+        $result = '';
+        foreach ($users as $record)
+        {
+            if ($record->getId() === $id)
+            {
+                $result = $record->getId() .' '. $record->getLogin();
             }
         }
-        return $result;
+        if ($result === '')
+        {
+            echo "Записи с таким id нет";
+        }
+        else
+        {
+            echo $result;
+        }
     }
 
-    public function MDGetByLogin($log)
+    public function MDGetByLogin($log,$users)
     {
-        $table = $this->DMdata->data;
         $result ='<p>';
-        foreach ($table as $record)
+        foreach ($users as $record)
         {
-            if ($record['login'] === $log)
+            if ($record->getLogin() === $log)
             {
-                $result = $result . ' ' . $record['id'] . " " . $record['login'] ."</p>" ;
+                $result = $result . ' ' . $record->getId() . " " . $record->getLogin() ."</p>" ;
             }
         }
-        return $result;
+        echo $result;
     }
 
     public function MDAdd($log,$pas)
     {
-        $this->DMdata->Command("insert into logPas(login,pass) values ('$log','$pas')");
+        $this->Command("insert into logPas(login,pass) values ('$log','$pas')");
     }
 
     public function MDChange($id,$newpas) {
-        $this->DMdata->Command("update logPas set  pass = '$newpas' where id = $id");
+        $this->Command("update logPas set  pass = '$newpas' where id = $id");
     }
 
     public function MDDelete($id) {
-        $this->DMdata->Command("delete from logPas where id = $id");
+        $this->Command("delete from logPas where id = $id");
 
     }
 

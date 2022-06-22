@@ -7,58 +7,54 @@ use Meme\Chat\MySQL\DM;
 class Rep
 {
     private DM $DM;
+    private $users = array();
 
     public function __construct()
     {
         $this->DM = new DM();
+        $this->users = $this->DM->MDGetAllFromTable();
     }
 
     public function getAll()
     {
-        $result = $this->DM->MDGetAll();
+
+        echo "<p>------------------------------</p>";
+        $this->DM->MDGetAll($this->users);
         echo "<p>------------------------------</p>";
 
-        foreach ($result as $record)
-        {
-            $id = $record['id'];
-            $log = $record['login'];
-            $pas = $record['pass'];
-            echo "<p>" . $id . ' ' .$log . ' ' . $pas . "</p>" ;
-        }
-        echo "<p>------------------------------</p>";
     }
 
     public function getById($id)
     {
+
         echo "<p>------------------------------</p>";
-        if ($this->DM->MDGetByID($id) === '')
-        {
-            echo "Записи с таким id нет";
-        }
-        else
-        {
-            echo $this->DM->MDGetByID($id);
-        }
+        $this->DM->MDGetByID($id,$this->users);
+
         echo "<p>------------------------------</p>";
     }
 
     public function getByLogin($log)
     {
+
         echo "<p>------------------------------</p>";
-        echo $this->DM->MDGetByLogin($log);
+        $this->DM->MDGetByLogin($log,$this->users);
+
         echo "<p>------------------------------</p>";
     }
     public function Add($log,$pas)
     {
         $this->DM->MDAdd($log,$pas);
+        $this->users = $this->DM->MDGetAllFromTable();
     }
     public function Change($id,$newpas)
     {
         $this->DM->MDChange($id,$newpas);
+        $this->users = $this->DM->MDGetAllFromTable();
     }
     public function Delete($id)
     {
         $this->DM->MDDelete($id);
+        $this->users = $this->DM->MDGetAllFromTable();
     }
 
 }
