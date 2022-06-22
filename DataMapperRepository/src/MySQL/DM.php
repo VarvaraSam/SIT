@@ -7,12 +7,10 @@ use Meme\Chat\MySQL\DMdata;
 
 class DM
 {
-  //  private $l;
     public DMdata $DMdata;
 
     public function __construct()
     {
-     //   $this->l = new PDO('mysql:host=localhost;dbname=sit', 'meme', 'memepass');
         $this->DMdata = new DMdata();
     }
 
