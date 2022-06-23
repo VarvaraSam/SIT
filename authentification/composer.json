@@ -1,0 +1,12 @@
+{
+    "name": "meme/authentification",
+    "autoload": {
+        "psr-4": {
+            "Meme\\Authentification\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.4",
+        "ext-pdo": "*"
+    }
+}
