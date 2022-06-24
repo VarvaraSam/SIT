@@ -7,7 +7,6 @@ use Meme\Authentification\Model\Model;
 class Controller
 {
     private $twig;
-    private $url = 'http://46.101.239.77:82';
     public function __construct(Environment $twig)
     {
         $this->twig = $twig;
