@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Главная страница{% endblock %}</title>
+        <button><a href="/user">Пользователи</a></button>
+        <button><a href="/group">Группы</a></button>
+        <button><a href="/message">Сообщения</a></button>
+        <button><a href="/userinfo">Информация о пользователях</a></button>
+        <button><a href="/userlikes">Любимые вещи пользователей</a></button>
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+    </body>
+</html>
