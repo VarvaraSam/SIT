@@ -17,51 +17,70 @@ class Controller
     public function control()
     {
         $uri = $_SERVER['REQUEST_URI'];
-        switch ($uri)
+        if (isset($_COOKIE['login']) && $_COOKIE['login'] !== '')
         {
-            case '/':
+            if ($uri ==='/out?')
             {
+                setcookie('login', '');
+                setcookie('cookiehacker', '');
                 echo $this->twig->render('logging.html.twig');
                 echo $this->twig->render('registr.html.twig');
-                echo  $_SERVER['REQUEST_URI'];
-                break;
-            }
-            case '/registration?':
-            {
-                echo $this->twig->render('registration.html.twig');
-                //$this->runreg();
 
-                break;
+                setcookie('login', '');
+                setcookie('cookiehacker', '');
             }
-            case '/login':
-            {
-
+            else  if ($uri ==='/login'){
                 $this->CookieHacker();
                 $this->getInfo();
-                $this->runlogin();
                 echo $this->twig->render('login.html.twig');
-
-
-                break;
             }
-            case '/registrationfinal':
-            {
-                //echo $_POST['loginreg'];
-                $this->runreg();
 
-                break;
-            }
-            case '/out?':
-            {
-                setcookie('login','');
-                setcookie('cookiehacker','');
-                echo $this->twig->render('logging.html.twig');
-                echo $this->twig->render('registr.html.twig');
+        }
+        else {
 
-                setcookie('login','');
-                setcookie('cookiehacker','');
 
-                break;
+            switch ($uri) {
+                case '/':
+                {
+                    echo $this->twig->render('logging.html.twig');
+                    echo $this->twig->render('registr.html.twig');
+                    break;
+                }
+                case '/registration?':
+                {
+                    echo $this->twig->render('registration.html.twig');
+                    //$this->runreg();
+
+                    break;
+                }
+                case '/login':
+                {
+                    $this->CookieHacker();
+                    $this->getInfo();
+                    $this->runlogin();
+                    echo $this->twig->render('login.html.twig');
+
+                    break;
+                }
+                case '/registrationfinal':
+                {
+                    //echo $_POST['loginreg'];
+                    $this->runreg();
+
+                    break;
+                }
+                case '/out?':
+                {
+                    setcookie('login', '');
+                    setcookie('cookiehacker', '');
+                    echo $this->twig->render('logging.html.twig');
+                    echo $this->twig->render('registr.html.twig');
+
+                    setcookie('login', '');
+                    setcookie('cookiehacker', '');
+
+                    break;
+                }
             }
         }
     }
