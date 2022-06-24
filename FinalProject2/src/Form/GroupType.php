@@ -2,29 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Group;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class GroupType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-           // ->add('roles')
-            ->add('password')
-            ->add('groups')
-            ->add('UserMainInfo')
+            ->add('GroupName')
+            ->add('Theme')
+            ->add('createdAt')
+            ->add('UserInfo')
+            ->add('users')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Group::class,
         ]);
     }
-
 }

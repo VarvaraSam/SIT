@@ -2,29 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\UserLikes;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class UserLikesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-           // ->add('roles')
-            ->add('password')
-            ->add('groups')
-            ->add('UserMainInfo')
+            ->add('TypeName')
+            ->add('Name')
+            ->add('UserWhoLikes')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => UserLikes::class,
         ]);
     }
-
 }
