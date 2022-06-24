@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit UserLikes{% endblock %}
+
+{% block body %}
+    <h1>Edit UserLikes</h1>
+
+    {{ include('user_likes/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_user_likes_index') }}">back to list</a>
+
+    {{ include('user_likes/_delete_form.html.twig') }}
+{% endblock %}
