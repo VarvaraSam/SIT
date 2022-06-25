@@ -4,23 +4,34 @@
 
 {% block body %}
 {% for user in users %}
-    <div><h3>Привет я-{{ user.username }}!</h3></div>
+    {% if app.user is not null %}
+{% if user.username == app.user.userIdentifier%}
+    <div><h3>Привет я-{{user.username }}!</h3></div>
     <div>
-        <div><p>{{ user.UserMainInfo.Status }}!</p></div>
-
-    </div>
-    <div>
-        <h4>Я состою в группах: </h4>
+        {% if user.UserMainInfo.Status is defined %}
+                <div><p>{{ user.UserMainInfo.Status }}</p></div>
+        {% else %}
+            <div><p>Я не заполнил статус!</p></div>
+        {%endif%}
+        {% if user.groups is defined %}
         {% for group in user.groups %}
             <div><p>{{ group.GroupName }}!</p></div>
         {% endfor %}
-    </div>
-    <div>
-        <h4>Мое самое любимое: </h4>
-        {% for likes in user.Likes %}
-            <div><p>{{ likes.TypeName }}:{{ likes.Name }}</p></div>
-        {% endfor %}
+            <h6 text = "gray"> Чтобы увидеть больше информации заполните таблицу Группы для себя</h6>
+        {% endif %}
     </div>
     <br>
+    <div>
+    {% if user.Likes is defined %}
+        <h4>Мое самое любимое: </h4>
+    {% for likes in user.Likes %}
+        <div><p>{{ likes.TypeName }}: {{ likes.Name }}</p></div>
+    {% endfor %}
+            <h6 text = "gray"> Чтобы увидеть больше информации заполните таблицу Любимые вещи пользователей для себя</h6>
+    {% endif %}
+    </div>
+    <br>
+    {% endif %}
+    {% endif %}
 {% endfor %}
 {% endblock %}
