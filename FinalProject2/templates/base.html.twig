@@ -2,12 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
+
         <title>{% block title %}Главная страница{% endblock %}</title>
-        <button><a href="/user">Пользователи</a></button>
-        <button><a href="/group">Группы</a></button>
-        <button><a href="/message">Сообщения</a></button>
-        <button><a href="/userinfo">Информация о пользователях</a></button>
-        <button><a href="/userlikes">Любимые вещи пользователей</a></button>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <button><a href="/user">Пользователи</a></button>
+            <button><a href="/group">Группы</a></button>
+            <button><a href="/message">Сообщения</a></button>
+            <button><a href="/userinfo">Информация о пользователях</a></button>
+            <button><a href="/userlikes">Любимые вещи пользователей</a></button>
+            <button><a href="/logout">Выйти</a></button>
+            <button><a href="/">Личная информация</a></button>
+        {% else %}
+            <button><a href="/login">Войти</a></button>
+            <button><a href="/register">Регистрация</a></button>
+        {% endif %}
+
 
     </head>
     <body>
